@@ -5,14 +5,12 @@ package com.foobar.fxhelloworld;
  */
 
 import javafx.application.Application;
-import javafx.event.Event;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-
-import java.awt.event.ActionEvent;
-import java.beans.EventHandler;
 
 public class HelloWorld extends Application {
 
@@ -25,11 +23,10 @@ public class HelloWorld extends Application {
         primaryStage.setTitle("Hello, World!");
         Button btn = new Button();
         btn.setText("Say 'Hello World!'");
-        btn.setOnAction(new EventHandler(<ActionEvent>() {
+        btn.setOnAction(new EventHandler<ActionEvent>() {
 
-            @Override
             public void handle(ActionEvent event) {
-                System.out.println("Hello, World!");
+                System.out.println("Hello World!");
             }
         });
 
