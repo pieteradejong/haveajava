@@ -14,12 +14,19 @@ public class StackTest {
     }
 
     @Test
-    public void createdStackShouldBeEmpty() {
-        assertEquals(stack.size(), 0);
+    public void itShouldBeEmptyAfterCreation() {
+        assertTrue(stack.isEmpty());
     }
 
     @Test
-    public void containsAddedItem() {
+    public void itShouldOneItemThatWasJustAdded() {
+        stack.push(9);
+        assertEquals(stack.peek(), 9);
+    }
+
+    @Test
+    public void itShouldPeekShowLastAddedItem() {
+        stack.push(4);
         stack.push(1);
         assertEquals(stack.peek(), 1);
     }
@@ -34,10 +41,12 @@ public class StackTest {
         stack.pop();
         assertEquals(stack.size(), 0);
     }
+
     @Test
-    public void itShouldContainAnItemThatWasJustAdded() {
-        stack.push(9);
-        assertEquals(stack.peek(), 9);
+    public void itShouldHaveItemOnTopAfterPeeking() {
+        stack.push(1);
+        stack.peek();
+        assertEquals(stack.pop(), 1);
     }
 }
 
