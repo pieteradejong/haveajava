@@ -2,20 +2,22 @@ package com.foobar.queue;
 
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
+import java.util.NoSuchElementException;
 
-import java.util.ArrayList;
+import static org.junit.Assert.assertTrue;
+
 
 /**
  * Unit tests for Queue.
  */
 
 public class QueueTest {
-    private ArrayList<Integer> queue;
+
+    private Queue queue;
 
     @Before
     public void setup() {
-        queue = new ArrayList<Integer>();
+        queue = new Queue();
     }
 
     @Test
@@ -39,6 +41,11 @@ public class QueueTest {
         queue.dequeue();
     }
 
+    @Test(expected=NoSuchElementException.class)
+    public void itShouldThrowExceptionWhenDequeueingEmptyQueue() {
+        queue.dequeue();
+    }
+
     @Test
     public void itShouldThrowNoSuchElementExceptionWhenPoppingEmptyQueue() {
         queue.dequeue();
@@ -49,7 +56,7 @@ public class QueueTest {
     public void itShouldReturnLastAddedElementWhenSizeIsOne() {
         // add el to queue of size zero, then pop() should return that el and size should thne be zero
         queue.enqueue(1);
-        assertEquals(queue.dequeue() == 1);
+        assertTrue(queue.dequeue() == 1);
     }
 
     @Test
@@ -58,10 +65,9 @@ public class QueueTest {
         queue.enqueue(3);
         queue.enqueue(2);
         queue.enqueue(1);
-        assertEquals(queue.dequeue() == 4);
-        assertEquals(queue.dequeue() == 3);
-        assertEquals(queue.dequeue() == 2);
-        assertEquals(queue.dequeue() == 1);
+        assertTrue(queue.dequeue() == 4);
+        assertTrue(queue.dequeue() == 3);
+        assertTrue(queue.dequeue() == 2);
+        assertTrue(queue.dequeue() == 1);
     }
-
 }
