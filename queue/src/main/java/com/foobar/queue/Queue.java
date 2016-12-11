@@ -23,10 +23,15 @@ public class Queue {
         if (queue.isEmpty()) {
             throw new NoSuchElementException("Cannot dequeue an empty queue.");
         }
-        return queue.remove(queue.size()-1);
+        return queue.remove(0);
+
     }
 
     public boolean isEmpty() {
-        return queue.size() == 0;
+        return getSize() == 0;
+    }
+
+    public int getSize() {
+        return queue.size();
     }
 }

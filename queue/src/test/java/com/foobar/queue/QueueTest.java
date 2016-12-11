@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import java.util.NoSuchElementException;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 
@@ -32,13 +33,14 @@ public class QueueTest {
     }
 
     @Test
-    public void itShouldHaveSizeZeroWhenEqualNumberItemsAddedAndRemoved() {
+    public void itShouldBeEmptyWhenEqualNumberItemsAddedAndRemoved() {
         queue.enqueue(3);
         queue.enqueue(3);
         queue.dequeue();
         queue.enqueue(9);
         queue.dequeue();
         queue.dequeue();
+        assertEquals(queue.getSize(), 0);
     }
 
     @Test(expected=NoSuchElementException.class)
@@ -47,14 +49,7 @@ public class QueueTest {
     }
 
     @Test
-    public void itShouldThrowNoSuchElementExceptionWhenPoppingEmptyQueue() {
-        queue.dequeue();
-        // TODO: how to verify exception thrown?
-    }
-
-    @Test
     public void itShouldReturnLastAddedElementWhenSizeIsOne() {
-        // add el to queue of size zero, then pop() should return that el and size should thne be zero
         queue.enqueue(1);
         assertTrue(queue.dequeue() == 1);
     }
