@@ -1,4 +1,4 @@
-package com.foobar.linkedlist;
+package com.foobar.circularbuffer;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -11,11 +11,11 @@ import static org.junit.Assert.assertEquals;
  */
 public class CircularBufferTest {
 
-    private com.foobar.linkedlist.CircularBuffer buffer;
+    private CircularBuffer buffer;
 
     @Before
     public void setup() {
-        buffer = new com.foobar.linkedlist.CircularBuffer(10);
+        buffer = new CircularBuffer(10);
     }
 
     @Test(expected = NoSuchElementException.class)
@@ -28,5 +28,17 @@ public class CircularBufferTest {
         buffer.insert(1);
         assertEquals(buffer.read(), 1);
     }
+
+    @Test
+    public void itShouldReadElementsInOrderInserted() {
+        buffer.insert(1);
+        buffer.insert(2);
+        buffer.insert(3);
+        assertEquals(buffer.read(), 1);
+        assertEquals(buffer.read(), 2);
+        assertEquals(buffer.read(), 3);
+    }
+
+
 
 }
