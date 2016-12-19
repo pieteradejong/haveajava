@@ -4,7 +4,7 @@ package com.foobar.circularbuffer;
 import java.util.NoSuchElementException;
 
 /**
- * Hello world!
+ * Circular Buffer
  */
 public class CircularBuffer {
     private Integer[] buffer;
@@ -29,7 +29,6 @@ public class CircularBuffer {
     }
 
     public int read() {
-        System.out.println(getSize());
         if (getSize() == 0) {
             throw new NoSuchElementException("Cannot remove element from empty CircularBuffer.");
         }
