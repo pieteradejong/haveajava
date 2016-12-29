@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Unit test for a Circular Buffer.
+ * Unit test for a LinkedList.
  */
 public class LinkedListTest {
 
@@ -21,6 +21,8 @@ public class LinkedListTest {
 
     @Test
     public void itShouldContainAnElementJustAdded() {
+        linkedList.addNode(1);
+        assertTrue(linkedList.contains(1));
     }
 
 }
