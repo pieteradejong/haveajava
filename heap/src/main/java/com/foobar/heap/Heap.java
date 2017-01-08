@@ -52,7 +52,15 @@ public class Heap {
     }
 
     public void heapifyDown() {
+        int ix = 1;
+        while (heap.get(ix) < heap.get(ix * 2) || heap.get(ix) < heap.get(ix * 2 + 1)) {
+            if (heap.get(ix) < heap.get(ix * 2)) {
+                // swap let child
+            } else if (heap.get(ix) < heap.get(ix * 2 + 1)) {
+                // swap right child
+            }
 
+        }
     }
 
     public int getSize() {
