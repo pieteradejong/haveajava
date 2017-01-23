@@ -6,7 +6,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 
 /**
- * Unit test for simple App.
+ * Unit test for Set.
  */
 public class SetTest {
 
