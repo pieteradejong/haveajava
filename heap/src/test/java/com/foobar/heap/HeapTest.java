@@ -1,38 +1,51 @@
 package com.foobar.heap;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 /**
- * Unit test for simple App.
+ * Unit tests for Heap.
  */
-public class HeapTest
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public Heap(String testName)
-    {
-        super( testName );
+public class HeapTest {
+
+    private Heap heap;
+
+    @Before
+    public void setup() {
+        heap = new Heap();
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( Heap.class );
+    @Test
+    public void itShouldBeEmptyWhenNoElementsAdded() {
+        assertTrue(set.isEmpty());
     }
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+    @Test
+    public void itShouldBeEmptyAfterElementsAddedAndRemoved() {
+        set.addElement(1);
+        set.addElement(2);
+        set.removeElement(1);
+        set.removeElement(2);
+        assertTrue(set.isEmpty());
+    }
+
+    @Test
+    public void itShouldContainElementAfterAdding() {
+        set.addElement(5);
+        assertTrue(set.contains(5));
+    }
+
+    @Test
+    public void itShouldNotContainElementNotAdded() {
+        assertFalse(set.contains(1));
+    }
+
+    @Test
+    public void itShouldNotContainElementAfterRemoving() {
+        set.addElement(1);
+        set.removeElement(1);
+        assertFalse(set.contains(1));
     }
 }

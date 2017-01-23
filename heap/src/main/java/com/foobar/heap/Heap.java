@@ -11,13 +11,14 @@ public class Heap {
     private ArrayList<Integer> heap = new ArrayList<Integer>();
 
     public Heap() {
-        heap.add(0, null);
+        heap.add(0, null); // simplify math
     }
 
     public int peek() throws Exception {
         if (heap.size() <= 1) {
             throw new Exception("Cannot peek into empty heap.");
         }
+        return heap.get(1);
     }
 
     public int insert(int n) {
@@ -33,21 +34,34 @@ public class Heap {
         return n;
     }
 
-    public void heapifyUp() {
-        int ix = getSize();
+    public void heapifyUp() throws Exception {
+        if(heap.size() < 2) {
+            throw new Exception("Cannot heapifyUp when Heap has zero or 1 element.");
+        }
 
-//        int el = heap.get(ix);
-//        int parent = heap.get(ix/2);
+        // get last el in aray
+        // while parent exist, and parent < el, swap el with parent
 
-        while (heap.get(ix) < heap.get(ix / 2) && ix > 1) {
-            int temp = heap.get(ix / 2);
-            heap.set(ix / 2, ix);
-            heap.set(ix, temp);
+        Integer ixLastElement = heap.size() - 1;
+
+        while (heap.get(ixLastElement) > heap.get(ixLastElement/2) && ixLastElement > 1) {
+            Integer el = heap.get(ixLastElement);
+            Integer parentIx = ixLastElement/2;
+            Integer parent = heap.get(parentIx);
+
+            int temp = parent;
+            heap.set(parentIx, el);
+            heap.set(ixLastElement, temp);
+
+
+            // reset
+            ixLastElement = ixLastElement / 2;
+
+
 
             ix = ix / 2;
 //            el = heap.get(ix);
 //            parent = heap.get(ix/2);
-
         }
     }
 
@@ -63,9 +77,9 @@ public class Heap {
         }
     }
 
-    public int getSize() {
-        return heap.size() - 1;
-    }
+//    public int getSize() {
+//        return heap.size() - 1;
+//    }
 
 
 }
